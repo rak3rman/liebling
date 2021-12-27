@@ -6,15 +6,15 @@ Also it includes the big submenu.
 {{#if isSecondary}}
   <ul class="m-secondary-menu">
     {{#foreach navigation}}
-      <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
-        <a href="{{url absolute="true"}}">{{label}}</a>
+      <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}" style="z-index: 5">
+        <a href="{{url absolute="true"}}" class="force-white">{{label}}</a>
       </li>
     {{/foreach}}
   </ul>
 {{else}}
   {{#foreach navigation}}
-    <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
-      <a href="{{url absolute="true"}}">{{label}}</a>
+    <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}" style="z-index: 5">
+      <a href="{{url absolute="true"}}" class="force-white">{{label}}</a>
     </li>
   {{/foreach}}
 {{/if}}

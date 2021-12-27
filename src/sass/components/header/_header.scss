@@ -21,7 +21,7 @@
   }
 
   &.headroom--pinned {
-    @include bs(0 4px 8px rgba(0, 0, 0, 0.05));
+    //@include bs(0 4px 8px rgba(0, 0, 0, 0.05));
     @include transform(translateY(0%));
 
     .m-header__shadow {

@@ -1,0 +1,213 @@
+{{!< default}}
+{{#contentFor "styles"}}
+    <link rel="preload" href="{{asset "css/home.css"}}" as="style"/>
+    <link rel="preload" href="{{asset "revolution/css/settings.css"}}" as="style">
+    <link rel="preload" href="{{asset "revolution/css/layers.css"}}" as="style">
+    <link rel="preload" href="{{asset "revolution/css/navigation.css"}}" as="style">
+    <link rel="preload" href="{{asset "revolution/revolution-addons/typewriter/css/typewriter.css"}}" as="style">
+
+    <link rel="stylesheet" type="text/css" href="{{asset "css/home.css"}}" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="{{asset "revolution/css/settings.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "revolution/css/layers.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "revolution/css/navigation.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "revolution/revolution-addons/typewriter/css/typewriter.css"}}">
+{{/contentFor}}
+<div class="content-wrapper">
+    <div class="m-header {{#if background}}with-picture{{/if}} js-header top-shadow" style="background: transparent">
+        <div class="m-mobile-topbar" data-aos="fade-down">
+            <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="{{t "Open menu"}}">
+                <span class="icon-menu" aria-hidden="true"></span>
+            </button>
+            {{#if @custom.dark_mode_logo}}
+                <a href="{{@site.url}}" class="m-logo in-mobile-topbar">
+                    <img src="{{@custom.dark_mode_logo}}" alt="{{@site.title}}" class="m-logo__image-dark">
+                </a>
+            {{else}}
+                <a href="{{@site.url}}" class="m-site-name in-mobile-topbar force-white">
+                    {{@site.title}}
+                </a>
+            {{/if}}
+            <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="{{t "Open search"}}">
+                <span class="icon-search" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="m-menu js-menu">
+            <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="{{t "Close menu"}}">
+                <span class="icon-close"></span>
+            </button>
+            <div class="m-menu__main" data-aos="fade-down">
+                <div class="l-wrapper">
+                    <div class="m-nav js-main-nav">
+                        <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="{{t "Main menu"}}">
+                            <ul>
+                                {{#if @custom.dark_mode_logo}}
+                                    <li class="only-desktop" style="z-index: 5;">
+                                        <a href="{{@site.url}}" class="m-logo">
+                                           <img src="{{@custom.dark_mode_logo}}" alt="{{@site.title}}" class="m-logo__image-dark">
+                                        </a>
+                                    </li>
+                                {{else}}
+                                    <li class="only-desktop" style="z-index: 5;">
+                                        <a href="{{@site.url}}" class="m-site-name in-desktop-menu force-white">
+                                            {{@site.title}}
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if @site.navigation}}
+                                    {{navigation}}
+                                {{/if}}
+                                {{#if @site.secondary_navigation}}
+                                    <li class="more" style="z-index: 5;">
+                                        <span>
+                                            <a href="javascript:void(0);" class="js-open-secondary-menu force-white">
+                                                {{t "More"}}
+                                                <span class="icon-chevron-down" aria-hidden="true"></span>
+                                            </a>
+                                        </span>
+                                    </li>
+                                {{/if}}
+                                <li class="submenu-option js-submenu-option">
+                                    <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="{{t "Open submenu"}}" style="color: rgba(255,255,255,0.9);">
+                                        <span class="icon-more" aria-hidden="true"></span>
+                                    </button>
+                                    <div class="m-submenu js-submenu">
+                                        <div class="l-wrapper in-submenu">
+                                            <section class="m-recent-articles">
+                                                <h3 class="m-submenu-title in-recent-articles">{{t "Recent articles"}}</h3>
+                                                {{#get "posts" limit="4" order="published_at desc" as |recent|}}
+                                                    {{#if recent}}
+                                                        <div class="glide js-recent-slider">
+                                                            <div class="glide__track" data-glide-el="track">
+                                                                <div class="glide__slides">
+                                                                    {{#foreach recent}}
+                                                                        <div class="glide__slide">
+                                                                            <a href="{{url}}" class="m-recent-article">
+                                                                                <div class="m-recent-article__picture {{#unless feature_image}}no-picture{{/unless}}">
+                                                                                    {{#if feature_image}}
+                                                                                        <img src="{{img_url feature_image size="s"}}" loading="lazy" alt="">
+                                                                                    {{else}}
+                                                                                        <img src="{{asset "images/no-image.png"}}" loading="lazy" alt="">
+                                                                                    {{/if}}
+                                                                                </div>
+                                                                                <h3 class="m-recent-article__title js-recent-article-title" title="{{title}}">
+                                                                                    {{title}}
+                                                                                </h3>
+                                                                                <span class="m-recent-article__date">{{date published_at timeago="true"}}</span>
+                                                                            </a>
+                                                                        </div>
+                                                                    {{/foreach}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {{else}}
+                                                        <div class="m-not-found in-recent-articles">{{t "No recent articles found :("}}</div>
+                                                    {{/if}}
+                                                {{/get}}
+                                            </section>
+                                            <section class="m-tags">
+                                                <h3 class="m-submenu-title">{{t "Tags"}}</h3>
+                                                {{#get "tags" limit="10"}}
+                                                    <ul>
+                                                        {{#foreach tags}}
+                                                            <li>
+                                                                <a href="{{url}}">{{name}}</a>
+                                                            </li>
+                                                        {{else}}
+                                                            <li class="m-not-found">{{t "No tags found :("}}</li>
+                                                        {{/foreach}}
+                                                    </ul>
+                                                {{/get}}
+                                            </section>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="m-nav__right" style="z-index: 5;">
+                            <button class="m-icon-button in-menu-main js-open-search" aria-label="{{t "Open search"}}">
+                                <span class="icon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#if @site.secondary_navigation}}
+            <div id="secondary-navigation-template" style="display: none;">
+                {{navigation type="secondary"}}
+            </div>
+        {{/if}}
+    </div>
+    <div class="dark-wrapper">
+        <div class="rev_slider_wrapper fullscreen-container">
+            <div id="slider14" class="rev_slider fullscreenbanner bg-dark" data-version="5.4.8">
+                <ul>
+                    <li data-transition="fade" data-thumb="{{ img_url "/assets/images/special1.jpg"}}"><img src="{{ img_url "/assets/images/special1.jpg"}}" alt="" /></li>
+                    <li data-transition="fade" data-thumb="{{ img_url "/assets/images/port2.jpg"}}"><img src="{{ img_url "/assets/images/port2.jpg"}}" alt="" /></li>
+                    <li data-transition="fade" data-thumb="{{ img_url "/assets/images/port3.jpg"}}"><img src="{{ img_url "/assets/images/port3.jpg"}}" alt="" /></li>
+                    <li data-transition="fade" data-thumb="{{ img_url "/assets/images/port4.jpg"}}"><img src="{{ img_url "/assets/images/port4.jpg"}}" alt="" /></li>
+                </ul>
+                <div class="tp-static-layers">
+                    <div class="tp-caption tp-static-layer title-header"
+                         data-x="center"
+                         data-y="middle"
+                         data-voffset="['-25','-25','-25','-25']"
+                         data-width="none"
+                         data-height="none"
+                         data-fontsize="['55','55','45','45']"
+                         data-lineheight="['65','65','55','55']"
+                         data-type="text"
+                         data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                         data-startslide="0"
+                         data-endslide="3"
+                         data-responsive_offset="on" style="z-index: 5;">Radison Akerman</div>
+                    <div class="tp-caption tp-static-layer title-header" id="slider-14-layer-2"
+                         data-x="center"
+                         data-y="middle"
+                         data-voffset="['45','45','45','45']"
+                         data-width="['600','550','550','550']"
+                         data-whitespace="normal"
+                         data-height="none"
+                         data-fontsize="['55','55','45','45']"
+                         data-lineheight="['65','65','55','55']"
+                         data-type="text"
+                         data-typewriter='{"lines":"Computer Wizard.,Photographer.,Leader.,Curious.,Thinker.,Developer.,Cyclist.,Storyteller.,Meticulous.,Actor.,Woodworker.,Maker.,Adaptive.,Doer.,Swimmer.,Volunteer.,Explorer.,Runner.,Ambitious.,Web Designer.,Chess Player.,Learner.,Investor.,Blogger.,Human.,Triathlete.","enabled":"on","speed":"50","delays":"1%7C100","looped":"on","blinking":"off","word_delay":"off","sequenced":"on","hide_cursor":"off","start_delay":"1000","newline_delay":"1000","deletion_speed":"20","deletion_delay":"2500","blinking_speed":"1000","linebreak_delay":"60","cursor_type":"two","background":"on"}'
+                         data-frames='[{"delay":1000,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                         data-startslide="0"
+                         data-endslide="3"
+                         data-responsive_offset="on" style="z-index: 6;">Multi-talented.</div>
+                    <div class="tp-caption tp-static-layer"
+                         data-x="center"
+                         data-y="middle"
+                         data-voffset="['130','130','130','130']"
+                         data-width="['auto','auto','auto','auto']"
+                         data-textAlign="['center','center','center','center']"
+                         data-frames='[{"delay":1500,"speed":1200,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                         data-startslide="0"
+                         data-endslide="3"
+                         data-responsive="on"
+                         data-responsive_offset="on"
+                         style="z-index: 14;" href="/about"><a href="/about" class="m-button filled" style="background-color: rgba(255,255,255,0.9);margin-right: 8px; z-index: 5">About Me</a><a href="/blog" class="m-button outlined" style="color: rgba(255,255,255,0.9);border: 1px solid rgba(255,255,255,0.9); z-index: 5">The Blog</a></div>
+                    <div class="tp-bannertimer tp-bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .force-white {
+        color: rgba(255,255,255,0.9) !important;
+    }
+    .top-shadow {
+      box-shadow: 0 70px 30px 0 rgba(0, 0, 0, 0.4) inset !important;
+      height: 100px;
+    }
+</style>
+{{#contentFor "scripts"}}
+<!--    <script defer src="{{asset "js/home.js"}}"></script>-->
+    <script defer src="{{asset "revolution/js/jquery.min.js"}}"></script>
+    <script defer src="{{asset "revolution/js/jquery.themepunch.tools.min.js"}}"></script>
+    <script defer src="{{asset "revolution/js/jquery.themepunch.revolution.min.js"}}"></script>
+    <script defer src="{{asset "revolution/revolution-addons/typewriter/js/revolution.addon.typewriter.js"}}"></script>
+    <script defer src="{{asset "revolution/js/scripts.js"}}"></script>
+{{/contentFor}}

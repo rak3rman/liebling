@@ -236,7 +236,7 @@ $(() => {
     }
   });
 
-  if (currentSavedTheme) {
+  if (currentSavedTheme && window.location.pathname !== "/") {
     $('html').attr('data-theme', currentSavedTheme);
 
     if (currentSavedTheme === 'dark') {
