@@ -29,15 +29,13 @@ This footer template is shared across all the pages.
           <span class="icon-twitter" aria-hidden="true"></span>
         </a>
       {{/if}}
-      <a href="{{@site.url}}/rss" aria-label="RSS">
-        <span class="icon-rss" aria-hidden="true"></span>
-      </a>
     </nav>
-    <p class="m-footer-copyright">
+    <p class="m-footer-copyright" style="margin-bottom: 5px">
       <span>&copy; {{@site.title}} {{date format="YYYY"}}</span>
       <span>&nbsp; &bull; &nbsp;</span>
       <span><a href="{{asset "html/javascript.html"}}" rel="jslicense">{{t "JS License Info"}}</a></span>
-      <br>
+    </p>
+    <p class="m-footer-copyright">
       <span><a href="{{@site.url}}/licensing/">{{t "Legal notice"}}</a></span>
       <span>&nbsp; &bull; &nbsp;</span>
       <span><a href="{{@site.url}}/privacy/">{{t "Privacy policy"}}</a></span>

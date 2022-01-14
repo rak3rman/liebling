@@ -235,10 +235,11 @@ $(() => {
       $closeSearch.trigger('click');
     }
   });
-
-  if (currentSavedTheme && window.location.pathname !== "/") {
+  // Custom dark mode switcher, default to dark mode on home page
+  if (window.location.pathname === "/" || window.location.pathname === "") {
+    $('html').attr('data-theme', 'dark');
+  } else if (currentSavedTheme) {
     $('html').attr('data-theme', currentSavedTheme);
-
     if (currentSavedTheme === 'dark') {
       $toggleDarkMode.attr('checked', true);
     }
