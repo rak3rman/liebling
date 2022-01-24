@@ -140,14 +140,16 @@
         </div>
       </div>
     </div>
-    {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
-    {{{body}}}
+    <div>
+      {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+      {{{body}}}
 
-    {{!-- Search form --}}
-    {{> search}}
+      {{!-- Search form --}}
+      {{> search}}
 
-    {{!-- The footer --}}
-    {{> footer}}
+      {{!-- The footer --}}
+      {{> footer}}
+    </div>
 
     {{!-- Common scripts shared between pages --}}
     <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
