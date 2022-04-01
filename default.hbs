@@ -12,7 +12,7 @@
 
     {{!-- Preload assets --}}
     <link rel="preload" href="{{asset "css/app.css"}}" as="style" />
-    <link rel="stylesheet" href="https://status.rakerman.com/public/css/banner.css" as="style" />
+    <link rel="stylesheet" href="https://status.rakerman.com/css/banner.css" as="style" />
     <link rel="preload" href="{{asset "js/manifest.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/vendor/content-api.min.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" />
@@ -157,10 +157,7 @@
     <script defer src="{{asset "js/vendor/content-api.min.js"}}"></script>
     <script defer src="{{asset "js/vendor.js"}}"></script>
     <script defer src="{{asset "js/app.js"}}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://status.rakerman.com/public/js/alert.js"></script>
-    <script src="https://status.rakerman.com/public/vendor/moment.min.js"></script>
-    <script>ping_raf_alert();</script>
+    <script src="https://status.rakerman.com/api/alert"></script>
 
     {{!-- The #block helper will pull in data from the #contentFor other template files --}}
     {{{block "scripts"}}}
