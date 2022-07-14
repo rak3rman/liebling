@@ -1,3 +1,19 @@
+# Mark 3
+
+The 3rd iteration of Radison Akerman's personal website, built for Ghost.io, forked from @eddiesinger
+
+## Site Screenshots
+
+[Home Page PDF](https://github.com/rak3rman/mark3/files/9107239/mark3home.pdf)
+
+[About Page PDF](https://github.com/rak3rman/mark3/files/9107241/mark3about.pdf)
+
+[Projects Page PDF](https://github.com/rak3rman/mark3/files/9107240/mark3projects.pdf)
+
+[Photography Page PDF](https://github.com/rak3rman/mark3/files/9107259/mark3photo.pdf)
+
+[Sample Blog Post PDF, Exploding Chickens](https://github.com/rak3rman/mark3/files/9107257/mark3ecblog.pdf)
+
 # Liebling
 
 Liebling is a beautiful and clean Ghost theme that is easy and comfortable to use. **It's free** and you can use it for any kind of content you might have. Now with dark mode 🌓!
